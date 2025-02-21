@@ -8,7 +8,6 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-
     <header>
         <h1>🎈 LA MULTI ANI, ILINCULEEE! 🎈</h1>
         <div class="balloons"></div>
@@ -31,30 +30,30 @@
         <button class="quiz-btn" onclick="notReady()">NU</button>
     </section>
 
-    <section class="quiz-container">
+    <section class="quiz-container" style="display: none;">
         <h2 id="quiz-question"></h2>
+        <div class="response-container"></div>
         <button class="quiz-btn" onclick="answerQuiz('DA')">DA</button>
         <button class="quiz-btn" onclick="answerQuiz('NU')">NU</button>
         <button class="quiz-btn" onclick="answerQuiz('POATE')">POATE</button>
     </section>
 
-    <section class="final-message">
+    <section class="final-message" style="display: none;">
         <h2>Azi e ziua ta, dar eu sunt cea norocoasă că am o prietenă ca tine. ADICĂ MINUNATĂ!!!!</h2>
         <button onclick="showCertificate()">CONTINUĂ</button>
     </section>
 
-    <section class="certificate">
+    <section class="certificate" style="display: none;">
         <h2>Pentru că ai parcurs cu brio acest chestionar, vreau să-ți dau acest certificat de CEA MAI BUNĂ PRIETENĂ EVER.</h2>
         <img src="certificate.jpg" alt="Certificat de cea mai bună prietenă">
         <button onclick="showCake()">VREMEA PENTRU TORT</button>
     </section>
 
-    <section class="cake-section">
+    <section class="cake-section" style="display: none;">
         <h2>🎂 LA MULTI ANI, ILINCA NOASTRA DRAGA!!!! 🎂</h2>
         <img src="cake.jpg" alt="Tort aniversar cu lumânări">
         <div class="balloons"></div>
         <div class="confetti"></div>
     </section>
-
 </body>
 </html>
