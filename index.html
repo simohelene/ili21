@@ -8,52 +8,37 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    <header>
-        <h1>🎈 LA MULTI ANI, ILINCULEEE! 🎈</h1>
-        <div class="balloons"></div>
-    </header>
-
-    <section class="scroll-section">
-        <h2>21 de ani fericiți</h2>
-    </section>
-
-    <section class="scroll-section message">In fiecare zi aduci lumina și bucurie în viețile noastre.</section>
-    <section class="scroll-section message">Azi e rândul nostru să-ți umplem ziua de magie.</section>
-    <section class="scroll-section message">Ești genul de om pe care Universul l-a desenat cu grijă, cu un suflet cald și un zâmbet care schimbă lumea.</section>
-    <section class="scroll-section message">Dacă ar fi să te descriu într-un cuvânt, nu aș putea.</section>
-    <section class="scroll-section message">Pentru că ești prea multe lucruri minunate într-o singură persoană.</section>
-    <section class="scroll-section message">Meriți tot ce e mai bun pe lume.</section>
-
-    <section class="scroll-section question">
-        <h2>Esti pregătită pentru un mic chestionar? Ma ajuta la licență 😂</h2>
-        <button class="quiz-btn" onclick="startQuiz()">DA</button>
-        <button class="quiz-btn" onclick="notReady()">NU</button>
-    </section>
-
-    <section class="quiz-container" style="display: none;">
-        <h2 id="quiz-question"></h2>
-        <div class="response-container"></div>
-        <button class="quiz-btn" onclick="answerQuiz('DA')">DA</button>
-        <button class="quiz-btn" onclick="answerQuiz('NU')">NU</button>
-        <button class="quiz-btn" onclick="answerQuiz('POATE')">POATE</button>
-    </section>
-
-    <section class="final-message" style="display: none;">
-        <h2>Azi e ziua ta, dar eu sunt cea norocoasă că am o prietenă ca tine. ADICĂ MINUNATĂ!!!!</h2>
-        <button onclick="showCertificate()">CONTINUĂ</button>
-    </section>
-
-    <section class="certificate" style="display: none;">
-        <h2>Pentru că ai parcurs cu brio acest chestionar, vreau să-ți dau acest certificat de CEA MAI BUNĂ PRIETENĂ EVER.</h2>
-        <img src="certificate.jpg" alt="Certificat de cea mai bună prietenă">
-        <button onclick="showCake()">VREMEA PENTRU TORT</button>
-    </section>
-
-    <section class="cake-section" style="display: none;">
-        <h2>🎂 LA MULTI ANI, ILINCA NOASTRA DRAGA!!!! 🎂</h2>
-        <img src="cake.jpg" alt="Tort aniversar cu lumânări">
-        <div class="balloons"></div>
-        <div class="confetti"></div>
-    </section>
+    <div id="presentation">
+        <section class="slide">🎈 LA MULTI ANI, ILINCULEEE! 🎈</section>
+        <section class="slide">21 de ani fericiți</section>
+        <section class="slide">In fiecare zi aduci lumina și bucurie în viețile noastre.</section>
+        <section class="slide">Azi e rândul nostru să-ți umplem ziua de magie.</section>
+        <section class="slide">Ești genul de om pe care Universul l-a desenat cu grijă, cu un suflet cald și un zâmbet care schimbă lumea.</section>
+        <section class="slide">Dacă ar fi să te descriu într-un cuvânt, nu aș putea.</section>
+        <section class="slide">Pentru că ești prea multe lucruri minunate într-o singură persoană.</section>
+        <section class="slide">Meriți tot ce e mai bun pe lume.</section>
+        <section class="slide question">Esti pregătită pentru un mic chestionar? Ma ajuta la licență 😂
+            <button onclick="startQuiz()">DA</button>
+        </section>
+        <section class="slide quiz" id="quiz-container" style="display: none;">
+            <h2 id="quiz-question"></h2>
+            <button onclick="answerQuiz('DA')">DA</button>
+            <button onclick="answerQuiz('NU')">NU</button>
+            <button onclick="answerQuiz('POATE')">POATE</button>
+            <p id="response"></p>
+        </section>
+        <section class="slide final" style="display: none;">Azi e ziua ta, dar eu sunt cea norocoasă că am o prietenă ca tine. ADICĂ MINUNATĂ!!!!
+            <button onclick="showCertificate()">CONTINUĂ</button>
+        </section>
+        <section class="slide" id="certificate-section" style="display: none;">
+            <h2>Pentru că ai parcurs cu brio acest chestionar, vreau să-ți dau acest certificat de CEA MAI BUNĂ PRIETENĂ EVER.</h2>
+            <img src="certificate.jpg" alt="Certificat de cea mai bună prietenă">
+            <button onclick="showCake()">VREMEA PENTRU TORT</button>
+        </section>
+        <section class="slide" id="cake-section" style="display: none;">
+            <h2>🎂 LA MULTI ANI, ILINCA NOASTRA DRAGA!!!! 🎂</h2>
+            <img src="cake.jpg" alt="Tort aniversar cu lumânări">
+        </section>
+    </div>
 </body>
 </html>
