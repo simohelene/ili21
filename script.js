@@ -1,58 +1,19 @@
-// Efect de confetti la apăsarea butonului DA
-function showConfetti() {
-    const canvas = document.getElementById("confetti");
-    const confetti = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    let particles = [];
-    for (let i = 0; i < 100; i++) {
-        particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            r: Math.random() * 5 + 2,
-            d: Math.random() * canvas.height / 2
-        });
-    }
-    function drawConfetti() {
-        confetti.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-            confetti.beginPath();
-            confetti.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            confetti.fillStyle = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            confetti.fill();
-            p.y += Math.random() * 3;
-            if (p.y > canvas.height) p.y = 0;
-        });
-        requestAnimationFrame(drawConfetti);
-    }
-    drawConfetti();
+// Efecte animate pentru confetti, ploaie și fulgi de nea
+function createAnimation(effect) {
+    const animationContainer = document.createElement("div");
+    animationContainer.classList.add(effect);
+    document.body.appendChild(animationContainer);
+    setTimeout(() => animationContainer.remove(), 3000);
 }
 
-// Efect de ploaie la apăsarea butonului NU
-function showRain() {
-    document.body.style.background = "#ccc";
-    alert("Plouă pe ecran! ☔");
-}
-
-// Efect de fulgi de nea la apăsarea butonului POATE
-function showSnow() {
-    document.body.style.background = "#e0f7fa";
-    alert("Ninge ușor pe ecran! ❄️");
-}
-
-// Gestionare chestionar
+// Chestionar interactiv
 const questions = [
-    "Ești gata să primești cea mai tare surpriză a zilei?",
-    "Accepți oficial titlul de Sărbătorita Supremă a zilei?",
-    "Recunoști că sunt cea mai tare prietenă ever?",
-    "Dacă azi ai putea să-ți îndeplinești orice dorință, ai face-o?",
-    "În final, promiți să ai o zi absolut GENIALĂ?"
+    { question: "Ești gata să primești cea mai tare surpriză a zilei?", responses: { "DA": "Perfect! Atunci stai pe aproape!", "NU": "Ești sigură? N-ai idee ce ratezi! 😏", "POATE": "Hai că știu că vrei! 😆" }},
+    { question: "Accepți oficial titlul de Sărbătorita Supremă a zilei?", responses: { "DA": "Așa te vreau! Regina zilei! 👑", "NU": "Prea târziu, ți l-am dat deja! 😆", "POATE": "Nu există poate! Ești deja superstarul zilei!" }},
+    { question: "Recunoști că sunt cea mai tare prietenă ever?", responses: { "DA": "Știam eu! ❤", "NU": "Minți, dar te iert, e ziua ta! 😆", "POATE": "Adică vrei să zici DA, dar te joci cu mine! 😂" }},
+    { question: "Dacă azi ai putea să-ți îndeplinești orice dorință, ai face-o?", responses: { "DA": "Atunci fă-ți o dorință acum! 💫", "NU": "Cum adică nu?! Hai că sigur ai una! 🎁", "POATE": "Hmm, hai că mă faci curioasă! 😏" }},
+    { question: "În final, promiți să ai o zi absolut GENIALĂ?", responses: { "DA": "Asta e atitudinea! 💃🔥", "NU": "Ce-ai zis? Nu aud, muzica e prea tare! 😂", "POATE": "Nu există poate! De azi înainte e doar DA! 🎈" }}
 ];
-const answers = {
-    "DA": "Confetti! 🎊",
-    "NU": "Plouă pe ecran! ☔",
-    "POATE": "Ninge ușor pe ecran! ❄️"
-};
 
 let currentQuestionIndex = 0;
 function startQuiz() {
@@ -62,7 +23,8 @@ function startQuiz() {
 
 function showNextQuestion() {
     if (currentQuestionIndex < questions.length) {
-        document.getElementById("quiz-question").innerText = questions[currentQuestionIndex];
+        const questionData = questions[currentQuestionIndex];
+        document.getElementById("quiz-question").innerText = questionData.question;
         document.querySelector(".quiz-container").style.display = "block";
     } else {
         document.querySelector(".quiz-container").style.display = "none";
@@ -71,12 +33,13 @@ function showNextQuestion() {
 }
 
 function answerQuiz(answer) {
-    alert(answers[answer]);
-    if (answer === "DA") showConfetti();
-    if (answer === "NU") showRain();
-    if (answer === "POATE") showSnow();
+    const responseText = questions[currentQuestionIndex].responses[answer];
+    alert(responseText);
+    if (answer === "DA") createAnimation("confetti");
+    if (answer === "NU") createAnimation("rain");
+    if (answer === "POATE") createAnimation("snow");
     currentQuestionIndex++;
-    setTimeout(showNextQuestion, 1000);
+    setTimeout(showNextQuestion, 1500);
 }
 
 // Fade-in la scroll
