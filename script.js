@@ -4,10 +4,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const quizContainer = document.getElementById("quiz-container");
     const certificateSection = document.getElementById("certificate-section");
     const cakeSection = document.getElementById("cake-section");
+    const confettiContainer = document.querySelector(".confetti");
+    const balloonsContainer = document.querySelector(".balloons");
+    const sparklesContainer = document.querySelector(".sparkles");
     
     function showSlide(index) {
         slides.forEach((slide, i) => {
-            slide.style.display = i === index ? "block" : "none";
+            slide.style.display = i === index ? "flex" : "none";
         });
     }
     
@@ -41,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("quiz-question").innerText = questionData.question;
         } else {
             quizContainer.style.display = "none";
-            certificateSection.style.display = "block";
+            certificateSection.style.display = "flex";
         }
     }
     
@@ -54,9 +57,16 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 1500);
     }
 
-    function showCertificate() {
-        certificateSection.style.display = "none";
-        cakeSection.style.display = "block";
+    function showCertificat() {
+        certificatSection.style.display = "none";
+        cakeSection.style.display = "flex";
+        launchCelebration();
+    }
+
+    function launchCelebration() {
+        confettiContainer.classList.add("active");
+        balloonsContainer.classList.add("active");
+        sparklesContainer.classList.add("active");
     }
 
     window.startQuiz = startQuiz;
