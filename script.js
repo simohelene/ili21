@@ -55,12 +55,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 1500);
     }
 
-    function showCertificate() {
-        certificateSection.style.display = "none";
-        cakeSection.style.display = "flex";
-        launchConfetti();
-    }
-
     function showCake() {
         certificateSection.style.display = "none";
         cakeSection.style.display = "flex";
@@ -92,7 +86,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     window.startQuiz = startQuiz;
     window.answerQuiz = answerQuiz;
-    window.showCertificate = showCertificate;
     window.showCake = showCake;
     window.nextSlide = nextSlide;
 });
