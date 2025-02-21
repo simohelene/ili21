@@ -61,6 +61,12 @@ document.addEventListener("DOMContentLoaded", function() {
         launchConfetti();
     }
 
+    function showCake() {
+        certificateSection.style.display = "none";
+        cakeSection.style.display = "flex";
+        launchConfetti();
+    }
+
     function launchConfetti() {
         confettiCanvas.width = window.innerWidth;
         confettiCanvas.height = window.innerHeight;
@@ -87,5 +93,6 @@ document.addEventListener("DOMContentLoaded", function() {
     window.startQuiz = startQuiz;
     window.answerQuiz = answerQuiz;
     window.showCertificate = showCertificate;
+    window.showCake = showCake;
     window.nextSlide = nextSlide;
 });
