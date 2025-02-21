@@ -4,9 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const quizContainer = document.getElementById("quiz-container");
     const certificateSection = document.getElementById("certificate-section");
     const cakeSection = document.getElementById("cake-section");
-    const confettiContainer = document.querySelector(".confetti");
-    const balloonsContainer = document.querySelector(".balloons");
-    const sparklesContainer = document.querySelector(".sparkles");
+    const confettiCanvas = document.getElementById("confetti-canvas");
     
     function showSlide(index) {
         slides.forEach((slide, i) => {
@@ -14,12 +12,12 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
     
-    document.addEventListener("wheel", function(event) {
-        if (event.deltaY > 0 && currentSlide < slides.length - 1) {
+    function nextSlide() {
+        if (currentSlide < slides.length - 1) {
             currentSlide++;
             showSlide(currentSlide);
         }
-    });
+    }
     
     showSlide(currentSlide);
 
@@ -57,19 +55,37 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 1500);
     }
 
-    function showCertificat() {
-        certificatSection.style.display = "none";
+    function showCertificate() {
+        certificateSection.style.display = "none";
         cakeSection.style.display = "flex";
-        launchCelebration();
+        launchConfetti();
     }
 
-    function launchCelebration() {
-        confettiContainer.classList.add("active");
-        balloonsContainer.classList.add("active");
-        sparklesContainer.classList.add("active");
+    function launchConfetti() {
+        confettiCanvas.width = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
+        const ctx = confettiCanvas.getContext("2d");
+        const confetti = [];
+        for (let i = 0; i < 100; i++) {
+            confetti.push({ x: Math.random() * confettiCanvas.width, y: Math.random() * confettiCanvas.height, r: Math.random() * 5 + 2, d: Math.random() * confettiCanvas.height / 2 });
+        }
+        function drawConfetti() {
+            ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+            confetti.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                ctx.fill();
+                p.y += Math.random() * 3;
+                if (p.y > confettiCanvas.height) p.y = 0;
+            });
+            requestAnimationFrame(drawConfetti);
+        }
+        drawConfetti();
     }
 
     window.startQuiz = startQuiz;
     window.answerQuiz = answerQuiz;
     window.showCertificate = showCertificate;
+    window.nextSlide = nextSlide;
 });
