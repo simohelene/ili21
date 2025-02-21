@@ -6,64 +6,93 @@
     <title>La mulți ani, Ilinca!</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7f7f7;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .slide {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+        }
+        .active {
+            display: flex;
+        }
+        img {
+            max-width: 90%;
+            height: auto;
+            max-height: 80vh;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div id="presentation">
-        <section class="slide centered">
+        <section class="slide active">
             <h1>🎈 LA MULTI ANI, ILINCULEEE! 🎈</h1>
             <button onclick="nextSlide()">➡️</button>
         </section>
-        <section class="slide centered">
+        <section class="slide">
             <h2>21 de ani fericiți</h2>
             <button onclick="nextSlide()">➡️</button>
         </section>
-        <section class="slide centered">
+        <section class="slide">
             <h2>In fiecare zi aduci lumina și bucurie în viețile noastre.</h2>
             <button onclick="nextSlide()">➡️</button>
         </section>
-        <section class="slide centered">
+        <section class="slide">
             <h2>Azi e rândul nostru să-ți umplem ziua de magie.</h2>
             <button onclick="nextSlide()">➡️</button>
         </section>
-        <section class="slide centered">
+        <section class="slide">
             <h2>Ești genul de om pe care Universul l-a desenat cu grijă, cu un suflet cald și un zâmbet care schimbă lumea.</h2>
             <button onclick="nextSlide()">➡️</button>
         </section>
-        <section class="slide centered">
+        <section class="slide">
             <h2>Dacă ar fi să te descriu într-un cuvânt, nu aș putea.</h2>
             <button onclick="nextSlide()">➡️</button>
         </section>
-        <section class="slide centered">
+        <section class="slide">
             <h2>Pentru că ești prea multe lucruri minunate într-o singură persoană.</h2>
             <button onclick="nextSlide()">➡️</button>
         </section>
-        <section class="slide centered">
+        <section class="slide">
             <h2>Meriți tot ce e mai bun pe lume.</h2>
             <button onclick="nextSlide()">➡️</button>
         </section>
-        <section class="slide question centered">
+        <section class="slide">
             <h2>Esti pregătită pentru un mic chestionar? Ma ajuta la licență 😂</h2>
             <button onclick="startQuiz()">DA</button>
         </section>
-        <section class="slide quiz centered" id="quiz-container" style="display: none;">
+        <section class="slide" id="quiz-container" style="display: none;">
             <h2 id="quiz-question"></h2>
             <button onclick="answerQuiz('DA')">DA</button>
             <button onclick="answerQuiz('NU')">NU</button>
             <button onclick="answerQuiz('POATE')">POATE</button>
             <p id="response"></p>
         </section>
-        <section class="slide final centered" style="display: none;">
-            <h2>Azi e ziua ta, dar eu sunt cea norocoasă că am o prietenă ca tine. ADICĂ MINUNATĂ!!!!</h2>
-            <button onclick="showCertificate()">CONTINUĂ</button>
-        </section>
-        <section class="slide centered" id="certificate-section" style="display: none;">
+        <section class="slide" id="certificate-section" style="display: none;">
             <h2>Pentru că ai parcurs cu brio acest chestionar, vreau să-ți dau acest certificat de CEA MAI BUNĂ PRIETENĂ EVER.</h2>
-            <img src="certificat.jpg" alt="Certificat de cea mai bună prietenă" class="certificate-img">
+            <img src="certificat.jpg" alt="Certificat de cea mai bună prietenă">
             <button onclick="showCake()">VREMEA PENTRU TORT</button>
         </section>
-        <section class="slide centered" id="cake-section" style="display: none;">
+        <section class="slide" id="cake-section" style="display: none;">
             <h2>🎂 LA MULTI ANI, ILINCA NOASTRA DRAGA!!!! 🎂</h2>
-            <img src="cake.jpg" alt="Tort aniversar cu lumânări" class="cake-img">
+            <img src="cake.jpg" alt="Tort aniversar cu lumânări">
             <canvas id="confetti-canvas"></canvas>
         </section>
     </div>
