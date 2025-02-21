@@ -40,6 +40,45 @@ function showSnow() {
     alert("Ninge ușor pe ecran! ❄️");
 }
 
+// Gestionare chestionar
+const questions = [
+    "Ești gata să primești cea mai tare surpriză a zilei?",
+    "Accepți oficial titlul de Sărbătorita Supremă a zilei?",
+    "Recunoști că sunt cea mai tare prietenă ever?",
+    "Dacă azi ai putea să-ți îndeplinești orice dorință, ai face-o?",
+    "În final, promiți să ai o zi absolut GENIALĂ?"
+];
+const answers = {
+    "DA": "Confetti! 🎊",
+    "NU": "Plouă pe ecran! ☔",
+    "POATE": "Ninge ușor pe ecran! ❄️"
+};
+
+let currentQuestionIndex = 0;
+function startQuiz() {
+    document.querySelector(".scroll-section").style.display = "none";
+    showNextQuestion();
+}
+
+function showNextQuestion() {
+    if (currentQuestionIndex < questions.length) {
+        document.getElementById("quiz-question").innerText = questions[currentQuestionIndex];
+        document.querySelector(".quiz-container").style.display = "block";
+    } else {
+        document.querySelector(".quiz-container").style.display = "none";
+        document.querySelector(".final-message").style.display = "block";
+    }
+}
+
+function answerQuiz(answer) {
+    alert(answers[answer]);
+    if (answer === "DA") showConfetti();
+    if (answer === "NU") showRain();
+    if (answer === "POATE") showSnow();
+    currentQuestionIndex++;
+    setTimeout(showNextQuestion, 1000);
+}
+
 // Fade-in la scroll
 document.addEventListener("DOMContentLoaded", function() {
     const sections = document.querySelectorAll(".scroll-section");
